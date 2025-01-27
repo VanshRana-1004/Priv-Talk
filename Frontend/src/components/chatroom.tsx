@@ -177,13 +177,13 @@ export function Chatroom(props : params){
     </div>
     :
     <div className=" h-[92%] w-full flex flex-col justify-baseline items-center font-sans font-semibold py-1 gap-2 px-5">
-        <div ref={containerRef} className="glass-container shadow shadow-indigo-400 border rounded-xl flex-1 flex flex-col p-4 gap-2 overflow-y-auto custom-scrollbar w-full bg-cover bg-center">
+        <div ref={containerRef} className="glass-container shadow shadow-indigo-400 border rounded-xl flex-1 flex flex-col p-4 gap-2 overflow-y-auto custom-scrollbar w-full ">
           {messages.map(([text,sender,position],index)=>(
             position=='center'
-            ?<div key={index} className={`min-h-[50px] glass-container w-fit text-purple-800 px-4 py-1 rounded self-center animate-fadeIn`}>{text}</div>
-            :<div key={index} className={`min-h-[50px] flex h-fit flex-col w-fit max-w-[90%] px-4 py-1 rounded-2xl ${position=='start'?'rounded-bl-xs self-left animate-slideInLeft bg-gray-800 text-white':'rounded-br-xs self-end animate-slideInRight bg-white text-black'} `}>
+            ?<div key={index} className={` glass-container w-fit text-purple-800 px-4 py-1 rounded self-center animate-fadeIn flex-shrink-0`}>{text}</div>
+            :<div key={index} className={` flex h-fit flex-col w-fit max-w-[90%] px-4 py-1 rounded-2xl flex-shrink-0 ${position=='start'?'rounded-bl-xs self-left animate-slideInLeft bg-gray-800 text-white':'rounded-br-xs self-end animate-slideInRight bg-white text-black'} `}>
               {position=='start' && <p className={`h-6 text-sm self-${position}`}>{sender}</p>}
-              <p className="flex flex-wrap h-auto w-fit overflow-hidden text-lg">{text}</p>
+              <p className="flex flex-wrap h-auto w-fit overflow-hidden text-lg ">{text}</p>
             </div>
           ))}
         </div>
