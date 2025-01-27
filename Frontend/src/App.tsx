@@ -1,9 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { Chatroom } from "./components/chatroom";
 import { Landing } from "./components/landing";
-import { Error } from "./components/error"
 import { useState } from "react";
-
+import { Error } from "./components/error";
 const App=()=>{
   const [roomId,setRoomId]=useState('');
   const [create,setCreate]=useState('');
