@@ -177,7 +177,7 @@ export function Chatroom(props : params){
     </div>
     :
     <div className=" h-[92%] w-full flex flex-col justify-baseline items-center font-sans font-semibold py-1 gap-2 px-5">
-        <div ref={containerRef} className="glass-container shadow shadow-indigo-400 border rounded-xl flex-1 flex flex-col p-4 gap-2 overflow-y-auto custom-scrollbar w-full bg-cover bg-center ">
+        <div ref={containerRef} className="glass-container shadow shadow-indigo-400 border rounded-xl flex-1 flex flex-col p-4 gap-2 overflow-y-auto custom-scrollbar w-full bg-cover bg-center h-16 ">
           {messages.map(([text,sender,position],index)=>(
             position=='center'
             ?<div key={index} className={`glass-container w-fit text-purple-800 px-4 py-1 rounded self-center animate-fadeIn`}>{text}</div>
