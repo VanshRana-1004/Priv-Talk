@@ -181,7 +181,7 @@ export function Chatroom(props : params){
           {messages.map(([text,sender,position],index)=>(
             position=='center'
             ?<div key={index} className={`glass-container w-fit text-purple-800 px-4 py-1 rounded self-center animate-fadeIn`}>{text}</div>
-            :<div key={index} className={`flex flex-col w-fit max-w-[90%] overflow-hidden  px-4 py-1 rounded-2xl ${position=='start'?'rounded-bl-xs self-left animate-slideInLeft bg-gray-800 text-white':'rounded-br-xs self-end animate-slideInRight bg-white text-black'} `}>
+            :<div key={index} className={`flex flex-col w-fit max-w-[90%] px-4 py-1 rounded-2xl ${position=='start'?'rounded-bl-xs self-left animate-slideInLeft bg-gray-800 text-white':'rounded-br-xs self-end animate-slideInRight bg-white text-black'} `}>
               {position=='start' && <p className={`text-sm self-${position}`}>{sender}</p>}
               <p className="flex flex-wrap h-auto w-fit overflow-hidden text-lg">{text}</p>
             </div>
