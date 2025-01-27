@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+IN:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+.custom-scrollbar {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE and Edge */
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+.custom-scrollbar::-webkit-scrollbar {
+    display: none; /* For WebKit browsers (Chrome, Safari) */
+}
+.custom-scrollbar::-webkit-scrollbar {
+    display: none; /* For WebKit browsers (Chrome, Safari) */
+}
+  
+.glass-container {
+    background: rgba(226, 170, 234, 0.1); /* Transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    color: #fff; /* Text color */
+  }
+  
+
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  .animate-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 3s steps(60, end);
+}
+  
+.playwrite-in-normal {
+    font-family: "Playwrite IN", serif; /* Use Playwrite IN font */
+    font-optical-sizing: auto;         /* Enable font optical sizing */
+    font-weight: 400;                  /* Set font weight (adjust as needed) */
+    font-style: normal;                /* Set font style */
+  }
+  
+  .playwrite-in-bold {
+    font-family: "Playwrite IN", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;                  /* Example: Bold weight */
+    font-style: normal;
+  }
+  
+  .playfair-display-normal {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
