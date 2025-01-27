@@ -182,8 +182,8 @@ export function Chatroom(props : params){
             position=='center'
             ?<div key={index} className={` glass-container w-fit text-purple-800 px-4 py-1 rounded self-center animate-fadeIn flex-shrink-0`}>{text}</div>
             :<div key={index} className={` flex h-fit flex-col w-fit max-w-[90%] px-4 py-1 rounded-2xl flex-shrink-0 ${position=='start'?'rounded-bl-xs self-left animate-slideInLeft bg-gray-800 text-white':'rounded-br-xs self-end animate-slideInRight bg-white text-black'} `}>
-              {position=='start' && <p className={`h-6 text-sm self-${position}`}>{sender}</p>}
-              <p className="flex flex-wrap h-auto w-fit overflow-hidden text-lg ">{text}</p>
+              {position=='start' && <p className={`h-6 flex-shrink-0 text-sm self-${position}`}>{sender}</p>}
+              <p className="flex flex-shrink-0 flex-wrap h-auto w-fit overflow-hidden text-lg ">{text}</p>
             </div>
           ))}
         </div>
