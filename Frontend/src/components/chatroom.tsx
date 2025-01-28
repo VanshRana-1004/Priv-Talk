@@ -166,7 +166,7 @@ export function Chatroom(props: params) {
   }, [messages])
 
   return (
-    <div className="h-screen w-full overflow-hidden flex flex-col pt-3 px-1" style={{ backgroundImage: 'url(solidbg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="h-screen bg-purple-700 w-full overflow-hidden flex flex-col pt-3 px-1" style={{ backgroundImage: 'url(solidbg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <ToastContainer />
       <div className={`flex ${bp == 'mp' ? 'flex-col' : ''} justify-between items-start `}>
         <Logo />
