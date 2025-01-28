@@ -43,7 +43,6 @@ export function Chatroom(props: params) {
     try {
       wsRef.current = new WebSocket(backendUrl);
       const create = (props.create == 'create' ? 'created' : 'joined');
-      console.log(localStorage.getItem('roomId'));
       const rid=localStorage.getItem('roomId');
       setRoomId(rid as string);
       wsRef.current.onopen = () => {
@@ -56,7 +55,6 @@ export function Chatroom(props: params) {
 
       wsRef.current.onmessage = (event) => {
         const data = JSON.parse(event.data);
-        console.log(data);
         if (data.status == 'success') {
           if (data.payload.username == undefined) return
           else setMessages((message) => [...message, [`${data.payload.username} joined`, '', 'center']]);
@@ -95,7 +93,6 @@ export function Chatroom(props: params) {
 
   const sendMessage = () => {
     const msg = inputRef.current.value;
-    console.log(msg)
     if (msg) {
       wsRef.current?.send(JSON.stringify({
         type: 'chat',
@@ -129,7 +126,6 @@ export function Chatroom(props: params) {
 
   const setName = () => {
     const name = nameRef.current.value;
-    console.log(name);
     if (name!='') {
       setUsername(name);
       if (wsRef.current?.OPEN) {
@@ -150,7 +146,6 @@ export function Chatroom(props: params) {
           })
         }
         
-        console.log('user entered');
       }
     }
   }
