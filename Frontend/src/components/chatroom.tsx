@@ -173,8 +173,8 @@ export function Chatroom(props: params) {
         {username &&
           <div className={`flex items-center justify-end self-center w-auto gap-5 ${bp == 'mp' ? 'gap-0 justify-center' : ''}`}>
             <div className={`bg-purple-100 text-black rounded-xl py-1 flex text-lg justify-center w-48 ${bp == 'mp' ? 'w-fit px-1' : ''} font-bold playfair-display-normal cursor-default`}>RoomId : {roomId}</div>
-            <button onClick={share} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 border border-white`}>Share</button>
-            <button onClick={leaveRoom} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 border border-white`}>Leave</button>
+            <button onClick={share} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-900 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 `}>Share</button>
+            <button onClick={leaveRoom} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-900 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 `}>Leave</button>
           </div>
         }
       </div>
@@ -183,7 +183,7 @@ export function Chatroom(props: params) {
         <div className=" flex flex-col glass-container  h-auto gap-5 px-5 py-8 shadow shadow-indigo-400 justify-around rounded-xl items-center w-auto m-auto">
           <p className='flex flex-wrap playfair-display-normal text-gray-50 text-3xl font-semibold'>Enter a name for yourself that others will see in the room.</p>
           <input ref={nameRef} type="text" placeholder="Enter Name " className="bg-purple-100 text-black rounded-xl py-2 flex text-lg text-center w-60 font-semibold placeholder-gray-900" />
-          <button onClick={setName} className="w-44  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-3 rounded-xl hover:bg-gray-100 hover:text-purple-700">Continue</button>
+          <button onClick={setName} className="w-44  bg-purple-800 cursor-pointer text-white text-md font-semibold  py-3 rounded-xl hover:bg-gray-100 hover:text-purple-700">Continue</button>
           <button onClick={leaveRoom} className="w-44  bg-purple-950 cursor-pointer text-white text-md font-semibold  py-3 rounded-xl hover:bg-gray-100 hover:text-purple-700">Back</button>
         </div>
         :
@@ -200,7 +200,7 @@ export function Chatroom(props: params) {
           </div>
           <div className="flex w-full h-12 gap-2">
             <input ref={inputRef} onKeyDown={(e) => { if (e.key === "Enter") { sendMessage(); }}} type="text" className="rounded flex-1 w-full bg-white text-black px-5 py-2" />
-            <button onClick={sendMessage} className={`w-32 ${bp == 'mp' ? 'w-fit px-3' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700`}>Send</button>
+            <button onClick={sendMessage} className={`w-32 ${bp == 'mp' ? 'w-fit px-3' : ''}  bg-purple-950 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700`}>Send</button>
           </div>
         </div>
       }
