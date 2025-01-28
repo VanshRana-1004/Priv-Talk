@@ -173,8 +173,8 @@ export function Chatroom(props: params) {
         {username &&
           <div className={`flex items-center justify-end self-center w-auto gap-5 ${bp == 'mp' ? 'gap-0 justify-center' : ''}`}>
             <div className={`bg-purple-100 text-black rounded-xl py-1 flex text-lg justify-center w-48 ${bp == 'mp' ? 'w-fit px-1' : ''} font-bold playfair-display-normal cursor-default`}>RoomId : {roomId}</div>
-            <button onClick={share} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700`}>Share</button>
-            <button onClick={leaveRoom} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700`}>Leave</button>
+            <button onClick={share} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 border border-white`}>Share</button>
+            <button onClick={leaveRoom} className={`  w-32 ${bp == 'mp' ? 'w-fit px-2' : ''}  bg-purple-700 cursor-pointer text-white text-md font-semibold  py-2 rounded-xl hover:bg-gray-100 hover:text-purple-700 border border-white`}>Leave</button>
           </div>
         }
       </div>
