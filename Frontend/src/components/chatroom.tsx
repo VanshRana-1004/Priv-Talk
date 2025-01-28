@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from './logo';
@@ -16,11 +15,11 @@ export function Chatroom(props: params) {
   const navigate = useNavigate();
   const wsRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState([["Welcome!", "System", 'start']]);
-  const inputRef = useRef<string>('');
+  const inputRef = useRef<any >('');
   const [username, setUsername] = useState("");
-  const nameRef = useRef('');
-  const [id, setId] = useState(Date.now());
-  const containerRef = useRef(null);
+  const nameRef = useRef<any>('');
+  const [id, ] = useState(Date.now());
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [bp, setBp] = useState('dt');
 
   useEffect(() => {
@@ -44,8 +43,11 @@ export function Chatroom(props: params) {
     try {
       wsRef.current = new WebSocket(backendUrl);
       const create = (props.create == 'create' ? 'created' : 'joined');
+      console.log(localStorage.getItem('roomId'));
+      const rid=localStorage.getItem('roomId');
+      setRoomId(rid as string);
       wsRef.current.onopen = () => {
-        toast.success(`Room ${create} : ` + roomId, {
+        toast.success(`Room ${create} : ` + localStorage.getItem('roomId'), {
           position: "top-center",
           className: "absolute ",
           autoClose: 2000,
@@ -54,6 +56,7 @@ export function Chatroom(props: params) {
 
       wsRef.current.onmessage = (event) => {
         const data = JSON.parse(event.data);
+        console.log(data);
         if (data.status == 'success') {
           if (data.payload.username == undefined) return
           else setMessages((message) => [...message, [`${data.payload.username} joined`, '', 'center']]);
@@ -91,7 +94,8 @@ export function Chatroom(props: params) {
   }, []);
 
   const sendMessage = () => {
-    const msg = inputRef.current;
+    const msg = inputRef.current.value;
+    console.log(msg)
     if (msg) {
       wsRef.current?.send(JSON.stringify({
         type: 'chat',
@@ -101,11 +105,15 @@ export function Chatroom(props: params) {
           senderId: id
         }
       }));
-      inputRef.current = '';
+      inputRef.current.value= '';
     }
   }
 
   const leaveRoom = () => {
+    if(wsRef.current==null){
+      alert('websocket off');
+      return;
+    }
     wsRef.current.send(JSON.stringify({
       type: 'close',
       payload: {
@@ -120,17 +128,29 @@ export function Chatroom(props: params) {
   }
 
   const setName = () => {
-    const name = nameRef.current;
-    if (name) {
+    const name = nameRef.current.value;
+    console.log(name);
+    if (name!='') {
       setUsername(name);
       if (wsRef.current?.OPEN) {
-        wsRef.current.send(JSON.stringify({
-          type: 'join',
-          payload: {
-            roomId: roomId,
-            username: name
-          }
-        }))
+        try{
+          wsRef.current.send(JSON.stringify({
+            type: 'join',
+            payload: {
+              roomId: roomId,
+              username: name
+            }
+          }))
+        }
+        catch(e){
+          toast.error(`someything went wrong`, {
+            position: "top-center",
+            className: "absolute ",
+            autoClose: 2000,
+          })
+        }
+        
+        console.log('user entered');
       }
     }
   }
@@ -192,4 +212,3 @@ export function Chatroom(props: params) {
     </div>
   )
 }
-```

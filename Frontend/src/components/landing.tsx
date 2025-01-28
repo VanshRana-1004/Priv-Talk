@@ -82,28 +82,30 @@ export function Landing(props : params){
             // alert("roomId can't be empty");
             return;
         }
-        wsRef.current?.send(JSON.stringify({
-            type:'join',
-            payload : {
-                roomId:roomId
-            }
-        }));
-        wsRef.current.onmessage=(event)=>{
-            const parsedData=JSON.parse(event.data);
-            if(parsedData.status=='error'){
-                toast.error(`Either invalid roomId or room closed`,{
-                    position: "top-center",
-                    className: "absolute ",
-                    autoClose: 2000,
-                })
-                // alert('Either invalid roomId or room closed');
-                return;
-            }
-            else if(parsedData.status=='success'){
-                props.setCreate('join');
-                props.setRoomId(roomId);
-                localStorage.setItem('roomId',roomId);
-                navigate('/chatroom');
+        if(wsRef.current?.readyState === WebSocket.OPEN){
+            wsRef.current?.send(JSON.stringify({
+                type:'join',
+                payload : {
+                    roomId:roomId
+                }
+            }));
+            wsRef.current.onmessage=(event)=>{
+                const parsedData=JSON.parse(event.data);
+                if(parsedData.status=='error'){
+                    toast.error(`Either invalid roomId or room closed`,{
+                        position: "top-center",
+                        className: "absolute ",
+                        autoClose: 2000,
+                    })
+                    // alert('Either invalid roomId or room closed');
+                    return;
+                }
+                else if(parsedData.status=='success'){
+                    props.setCreate('join');
+                    props.setRoomId(roomId);
+                    localStorage.setItem('roomId',roomId);
+                    navigate('/chatroom');
+                }
             }
         }        
     }
@@ -120,30 +122,32 @@ export function Landing(props : params){
             return;
         }
         const roomId=generateRoom();
-        wsRef.current?.send(JSON.stringify({
-            type:'create',
-            payload:{
-                roomId:roomId
-            }
-        }))
-        wsRef.current.onmessage=(event)=>{
-            const parsedData=JSON.parse(event.data);
-            if(parsedData.status=='error'){
-                toast.error(`unable to create room please refresh`,{
-                    position: "top-center",
-                    className: "absolute ",
-                    autoClose: 2000,
-                })
-                // alert('unable to create room please refresh');
-                return;
-            }
-            else if(parsedData.status=='success'){
-                props.setCreate('create');
-                props.setRoomId(roomId);
-                localStorage.setItem('roomId',roomId);
-                navigate('/chatroom');
-            }
-        }        
+        if(wsRef.current?.readyState === WebSocket.OPEN){
+            wsRef.current?.send(JSON.stringify({
+                type:'create',
+                payload:{
+                    roomId:roomId
+                }
+            }))
+            wsRef.current.onmessage=(event)=>{
+                const parsedData=JSON.parse(event.data);
+                if(parsedData.status=='error'){
+                    toast.error(`unable to create room please refresh`,{
+                        position: "top-center",
+                        className: "absolute ",
+                        autoClose: 2000,
+                    })
+                    // alert('unable to create room please refresh');
+                    return;
+                }
+                else if(parsedData.status=='success'){
+                    props.setCreate('create');
+                    props.setRoomId(roomId);
+                    localStorage.setItem('roomId',roomId);
+                    navigate('/chatroom');
+                }
+            }        
+        }
     }
 
     const style='playfair-display-normal text-gray-200  font-semibold flex flex-wrap w-[520px]';

@@ -1,6 +1,6 @@
 import { WebSocketServer,WebSocket } from "ws";
 const PORT = parseInt(process.env.PORT||"1000",10);
-const wss=new WebSocketServer({port:PORT});
+const wss=new WebSocketServer({port:8080});
 
 let allSockets : Map<string,WebSocket[]>=new Map(); 
 let userRoom : Map<WebSocket,string>=new Map();
@@ -109,6 +109,7 @@ wss.on("connection",function(socket){
 
         }
         catch(e){
+            
             socket.send(JSON.stringify({
                 status:"error",
                 payload:{
@@ -119,5 +120,4 @@ wss.on("connection",function(socket){
     })
 
 })
-
 
