@@ -10,7 +10,7 @@ const App=()=>{
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing setRoomId={setRoomId} setCreate={setCreate}/>}/>
-        <Route path="/chatroom" element={<Chatroom roomId={roomId} create={create}/>}/>
+        <Route path="/chatroom/:roomId" element={<Chatroom roomId={roomId} create={create}/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
     </BrowserRouter>

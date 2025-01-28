@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { generateRoom } from "../../utils/generate";
@@ -104,7 +103,7 @@ export function Landing(props : params){
                     props.setCreate('join');
                     props.setRoomId(roomId);
                     localStorage.setItem('roomId',roomId);
-                    navigate('/chatroom');
+                    navigate(`/chatroom/${localStorage.getItem('roomId')}`);
                 }
             }
         }        
@@ -144,7 +143,7 @@ export function Landing(props : params){
                     props.setCreate('create');
                     props.setRoomId(roomId);
                     localStorage.setItem('roomId',roomId);
-                    navigate('/chatroom');
+                    navigate(`/chatroom/${localStorage.getItem('roomId')}`);
                 }
             }        
         }
