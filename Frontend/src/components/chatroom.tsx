@@ -166,7 +166,7 @@ export function Chatroom(props: params) {
   }, [messages])
 
   return (
-    <div className="h-screen bg-purple-700 w-full overflow-hidden flex flex-col pt-3 px-1" style={{ backgroundImage: 'url(solidbg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className={`h-screen bg-[url('/solidbg.png')] bg-cover bg-center w-full overflow-hidden flex flex-col pt-3 px-1`} >
       <ToastContainer />
       <div className={`flex ${bp == 'mp' ? 'flex-col' : ''} justify-between items-start `}>
         <Logo />
@@ -180,7 +180,7 @@ export function Chatroom(props: params) {
       </div>
       {username == ''
         ?
-        <div className=" flex flex-col glass-container  h-auto gap-5 px-5 py-8 shadow shadow-indigo-400 justify-around rounded-xl items-center w-auto m-auto">
+        <div className={` flex flex-col glass-container  h-auto gap-5 ${bp=='mp'?'px-1 py-4':'px-5 py-8'} shadow shadow-indigo-400 justify-around rounded-xl items-center w-auto m-auto`}>
           <p className='flex flex-wrap playfair-display-normal text-gray-50 text-3xl font-semibold'>Enter a name for yourself that others will see in the room.</p>
           <input ref={nameRef} type="text" placeholder="Enter Name " className="bg-purple-100 text-black rounded-xl py-2 flex text-lg text-center w-60 font-semibold placeholder-gray-900" />
           <button onClick={setName} className="w-44  bg-purple-800 cursor-pointer text-white text-md font-semibold  py-3 rounded-xl hover:bg-gray-100 hover:text-purple-700">Continue</button>

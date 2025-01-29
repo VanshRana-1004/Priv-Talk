@@ -106,6 +106,10 @@ export function Landing(props : params){
                     navigate(`/chatroom/${localStorage.getItem('roomId')}`);
                 }
             }
+        }
+        else{
+            toast.error("Server is not listening. Attempting to reconnect...")
+            setRefesh(!refresh)
         }        
     }
 
@@ -146,6 +150,10 @@ export function Landing(props : params){
                     navigate(`/chatroom/${localStorage.getItem('roomId')}`);
                 }
             }        
+        }
+        else{
+            toast.error("Server is not listening. Attempting to reconnect...")
+            setRefesh(!refresh)
         }
     }
 
