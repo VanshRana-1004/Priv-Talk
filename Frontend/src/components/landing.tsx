@@ -157,7 +157,7 @@ export function Landing(props : params){
         }
     }
 
-    const style='playfair-display-normal text-gray-200  font-semibold flex flex-wrap w-[520px]';
+    const style='playwrite-in-bold text-gray-200  font-semibold flex flex-wrap w-[520px]';
 
     return <div className={`w-[100%] h-[100%] ${bp==1200?'flex py-5 pb-2 px-24 pl-12':'flex flex-col py-10 px-6'} `} 
             style={{ backgroundImage: `${bp==1200?'url(landing.png)':'url(solidbg.png)'}`, backgroundSize: 'cover', backgroundPosition: 'center',width:`${curw}px`,height:`${curh}px`,backgroundRepeat: 'repeat' }}>
